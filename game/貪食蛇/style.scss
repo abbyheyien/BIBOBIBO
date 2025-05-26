@@ -1,0 +1,428 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #e8ebef;
+  color: #2e3338;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-header {
+  background: #4a5363;
+  color: #e1e6eb;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #7d8ca3;
+}
+.site-header .container {
+  max-width: 1200px;
+  margin: auto;
+}
+.site-header .container .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+.site-header .container .header-inner .logo {
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e1e6eb;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 0 0 4px rgba(173, 181, 189, 0.6);
+}
+.site-header .container .header-inner .search-input {
+  flex-grow: 1;
+  max-width: 500px;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #e1e6eb;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  color: #e1e6eb;
+  text-align: center; /* 預設置中 placeholder */
+  transition: all 0.3s ease;
+  margin-left: 4rem;
+}
+/* 輸入時或有文字時左對齊 */
+.site-header .container .header-inner .search-input:focus,
+.site-header .container .header-inner .search-input:not(:placeholder-shown) {
+  text-align: left;
+}
+
+/* placeholder 顏色 */
+.site-header .container .header-inner .search-input::placeholder {
+  color: rgba(225, 230, 235, 0.6);
+}
+.site-header .container .header-inner nav.navbar {
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
+.site-header .container .header-inner nav.navbar ul.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.75rem;
+}
+.site-header .container .header-inner nav.navbar li {
+  white-space: nowrap;
+}
+.site-header .container .header-inner nav.navbar a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #e1e6eb;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+.site-header .container .header-inner nav.navbar a:hover {
+  color: white;
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #e1e6eb;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+
+.site-footer {
+  background: #4a5363;
+  color: #e1e6eb;
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #7d8ca3;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 2rem; /* 與遊戲區塊間隔 */
+}
+
+/* --- 貪食蛇遊戲專屬 CSS --- */
+.game-main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: #f0f8ff; /* 給遊戲區塊一個不同的背景色 */
+  border-radius: 10px;
+  width: 95%;
+  max-width: 800px;
+  margin: 2rem auto; /* 上下邊距 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.game-main-content h2 {
+  color: #2c3e50; /* 深藍灰色標題 */
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #3498db; /* 藍色邊框 */
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  text-align: center;
+  width: 300px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+input:focus,
+input:not(:placeholder-shown) {
+  text-align: left;
+}
+
+#gameCanvas {
+  /* 使用 ID 提高優先級 */
+  border: 2px solid #bdc3c7; /* 淺灰色畫布邊框 */
+  background-color: #ecf0f1; /* 非常淺的灰色背景 */
+  border-radius: 5px;
+}
+
+.score-board {
+  font-size: 1.5em;
+  color: #2980b9; /* 較深的藍色 */
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.controls-info {
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #7f8c8d; /* 中灰色 */
+  text-align: center;
+}
+
+.controls-info p {
+  margin: 5px 0;
+}
+
+#startButton,
+#restartButton {
+  /* 使用 ID 提高優先級 */
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  background-color: #3498db; /* 藍色按鈕 */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+#startButton:hover,
+#restartButton:hover {
+  background-color: #2980b9; /* 滑鼠懸停時更深的藍色 */
+}
+#startButton:active,
+#restartButton:active {
+  transform: translateY(1px);
+}
+
+.message-overlay {
+  position: fixed; /* 改為 fixed 以覆蓋整個視窗 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 半透明黑色背景 */
+  display: none; /* 預設隱藏 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2000; /* 確保在最上層 */
+}
+
+.message-box {
+  background-color: white;
+  padding: 25px 35px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+.message-box h2 {
+  color: #e74c3c; /* 紅色標題 (遊戲結束) */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.message-box p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* --- 響應式調整 --- */
+@media (max-width: 1024px) {
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .site-header .container .header-inner .search-input {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .site-header .container .header-inner nav.navbar {
+    margin-left: 0;
+  }
+  .site-header .container .header-inner nav.navbar ul.nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #4a5363;
+    width: 100%;
+    z-index: 1000;
+  }
+  .navbar ul.nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  .navbar.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .logo {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .game-main-content h2 {
+    font-size: 1.5rem;
+  }
+  .score-board {
+    font-size: 1.2em;
+  }
+  button#startButton,
+  button#restartButton {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 0.75rem 0;
+  }
+  .message-box {
+    padding: 20px;
+    width: 80%;
+  }
+  .message-box h2 {
+    font-size: 1.5em;
+  }
+  .message-box p {
+    font-size: 1em;
+  }
+}
+
+/* 手機按鈕基礎樣式 */
+.mobile-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.mobile-controls button {
+  width: 50px;
+  height: 50px;
+  background-color: #27ae60;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-controls button:hover {
+  background-color: #2ecc71;
+}
+
+/* 按鈕文字陰影，讓字更立體 */
+.mobile-controls button::before {
+  content: attr(data-key);
+  position: absolute;
+  opacity: 0.15;
+  filter: blur(1px);
+  transform: translate(2px, 2px);
+  pointer-events: none;
+  font-weight: 900;
+}
+
+/* 按下時效果 */
+.mobile-controls button:active {
+  background: linear-gradient(145deg, #357abd, #4a90e2);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transform: translateY(2px);
+}
+
+/* 按鈕間距調整，左右方向按鈕稍微變長 */
+.mobile-controls button.left,
+.mobile-controls button.right {
+  width: 70px;
+}
+
+/* 方向鍵箭頭用 Unicode */
+.mobile-controls button.up::after {
+  content: "⬆";
+  font-size: 1.5rem;
+}
+.mobile-controls button.down::after {
+  content: "⬇";
+  font-size: 1.5rem;
+}
+.mobile-controls button.left::after {
+  content: "⬅";
+  font-size: 1.5rem;
+}
+.mobile-controls button.right::after {
+  content: "➡";
+  font-size: 1.5rem;
+}
