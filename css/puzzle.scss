@@ -37,95 +37,85 @@ a {
 
 // 🔝 導覽列（含搜尋欄）
 .site-header {
-  background: $primary-color-dark;
-  color: $primary-color-light;
+  background: #4a5363;
+  color: #e1e6eb;
   padding: 1rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid $primary-color;
+  border-bottom: 1px solid #7d8ca3;
+}
+.site-header .container {
+  max-width: 1200px;
+  margin: auto;
+}
+.site-header .container .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+.site-header .container .header-inner .logo {
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e1e6eb;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 0 0 4px rgba(173, 181, 189, 0.6);
+}
+.site-header .container .header-inner .search-input {
+  flex-grow: 1;
+  max-width: 500px;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #e1e6eb;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  color: #e1e6eb;
+  text-align: center; /* 預設置中 placeholder */
+  transition: all 0.3s ease;
+  margin-left: 4rem;
+}
+/* 輸入時或有文字時左對齊 */
+.site-header .container .header-inner .search-input:focus,
+.site-header .container .header-inner .search-input:not(:placeholder-shown) {
+  text-align: left;
+}
 
-  .container {
-    max-width: 1200px;
-    margin: auto;
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      position: relative;
-
-      .logo {
-        flex-shrink: 0;
-        font-size: 1.8rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: $primary-color-light;
-        font-family: "Orbitron", sans-serif;
-        text-shadow: 0 0 4px rgba(173, 181, 189, 0.6);
-      }
-
-      .search-input {
-        flex-grow: 1;
-        max-width: 500px;
-        padding: 0.5rem 1rem;
-        border: 1.5px solid $primary-color-light;
-        border-radius: 25px;
-        font-size: 1rem;
-        outline: none;
-        background: transparent;
-        color: $primary-color-light;
-        text-align: center;
-        transition: all 0.3s ease;
-        margin-left: 4rem;
-
-        &::placeholder {
-          color: rgba($primary-color-light, 0.6);
-        }
-
-        &:focus {
-          border-color: #c0c8d3;
-          box-shadow: 0 0 8px 3px rgba(192, 200, 211, 0.6);
-          background-color: rgba(255, 255, 255, 0.1);
-          color: white;
-        }
-      }
-
-      nav.navbar {
-        flex-shrink: 0;
-        margin-left: 2rem;
-
-        ul.nav-links {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          display: flex;
-          gap: 0.75rem; // ← 調整這裡
-        }
-
-        li {
-          white-space: nowrap;
-        }
-
-        a {
-          display: block;
-          padding: 0.5rem 1rem;
-          color: $primary-color-light;
-          font-weight: 600;
-          font-size: 1.05rem;
-          text-decoration: none;
-          letter-spacing: 1px;
-          transition: color 0.3s ease;
-
-          &:hover {
-            color: white;
-            text-decoration: underline;
-            text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
-          }
-        }
-      }
-    }
-  }
+/* placeholder 顏色 */
+.site-header .container .header-inner .search-input::placeholder {
+  color: rgba(225, 230, 235, 0.6);
+}
+.site-header .container .header-inner nav.navbar {
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
+.site-header .container .header-inner nav.navbar ul.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.75rem;
+}
+.site-header .container .header-inner nav.navbar li {
+  white-space: nowrap;
+}
+.site-header .container .header-inner nav.navbar a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #e1e6eb;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+.site-header .container .header-inner nav.navbar a:hover {
+  color: white;
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
 }
 
 // 🔧 漢堡選單按鈕樣式

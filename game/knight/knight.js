@@ -1,3 +1,11 @@
+// 漢堡選單切換
+const menuToggle = document.querySelector(".menu-toggle");
+const navbar = document.querySelector("nav.navbar");
+
+menuToggle.addEventListener("click", () => {
+  navbar.classList.toggle("active");
+});
+
 let boardSize; // 棋盤大小 (qípán dàxiǎo) - 現在是變數
 const boardElement = document.getElementById("board");
 const moveCountElement = document.getElementById("moveCount");
