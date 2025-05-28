@@ -1,49 +1,44 @@
 @charset "UTF-8";
+/* Reset 與基礎設定 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html,
 body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #e8ebef;
-  color: #2e3338;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  text-align: center;
-}
-
-a {
-  text-decoration: none;
-}
-
+/* 版面結構 */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
 }
 
-.logo a {
-  text-decoration: none;
-  color: inherit;
-}
-
+/* 主要區塊 */
+/* 頁首 */
 .site-header {
-  background: #4a5363;
+  background: #4a5363; /* 主色 */
   color: #e1e6eb;
   padding: 1rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid #7d8ca3;
-}
-
-.site-header .container {
-  max-width: 1200px;
-  margin: auto;
 }
 
 .site-header .container .header-inner {
@@ -75,24 +70,24 @@ a {
   outline: none;
   background: transparent;
   color: #e1e6eb;
-  text-align: center; /* 預設置中 placeholder */
+  text-align: center;
   transition: all 0.3s ease;
   margin-left: 4rem;
 }
 
-/* 輸入時或有文字時左對齊 */
 .site-header .container .header-inner .search-input:not(:-moz-placeholder-shown) {
   text-align: left;
 }
+
 .site-header .container .header-inner .search-input:focus,
 .site-header .container .header-inner .search-input:not(:placeholder-shown) {
   text-align: left;
 }
 
-/* placeholder 顏色 */
 .site-header .container .header-inner .search-input::-moz-placeholder {
   color: rgba(225, 230, 235, 0.6);
 }
+
 .site-header .container .header-inner .search-input::placeholder {
   color: rgba(225, 230, 235, 0.6);
 }
@@ -131,6 +126,7 @@ a {
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
 }
 
+/* 手機選單按鈕 */
 .menu-toggle {
   display: none;
   background: none;
@@ -144,98 +140,45 @@ a {
   right: 1rem;
 }
 
-.site-footer {
-  background: #4a5363;
-  color: #e1e6eb;
-  padding: 1.2rem 0;
+/* 主要內容區 */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* 垂直排列 */
+  justify-content: center; /* 垂直置中 */
+  align-items: center; /* 水平置中 */
+  padding: 2rem;
   text-align: center;
-  font-size: 0.9rem;
-  border-top: 1px solid #7d8ca3;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin-top: 2rem; /* 與遊戲區塊間隔 */
+  gap: 1rem;
 }
 
-/* footer */
+/* 頁尾 */
 .site-footer {
-  background: #4a5363;
+  background: #4a5363; /* 主色 */
   color: #e1e6eb;
   padding: 1.2rem 0;
   text-align: center;
   font-size: 1rem;
   border-top: 1px solid #7d8ca3;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.game-info {
-  justify-content: center;
-  text-align: center;
-  margin: 0 auto 20px auto;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4x4 網格 */
-  gap: 10px;
-  width: 90%;
-  max-width: 400px; /* 根據卡牌大小調整 */
-  margin: 0 auto;
-  perspective: 1000px; /* 為 3D 翻轉效果設定透視 */
-}
-
-.card {
-  background-color: transparent;
-  aspect-ratio: 1/1; /* 保持卡牌為正方形 */
-  border-radius: 8px;
-  cursor: pointer;
+  flex-shrink: 0;
+  min-height: 40px;
   position: relative;
-  transform-style: preserve-3d; /* 允許子元素進行 3D 轉換 */
-  transition: transform 0.6s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
-.card.is-flipped {
-  transform: rotateY(180deg); /* 卡牌翻轉效果 */
+.site-footer p {
+  color: #e1e6eb !important;
 }
 
-/* 配對成功，強制保持翻開 */
-.card.is-matched {
-  cursor: default; /* 不能再點 */
-  /* 確保翻牌狀態 */
-  transform: rotateY(180deg);
-  /* 可加強調效果，比如加邊框或陰影 */
-  box-shadow: 0 0 10px 3px rgb(54, 61, 255);
+/* 元件樣式 */
+a {
+  text-decoration: none;
 }
 
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; /* 隱藏元素的背面 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  font-size: clamp(20px, 8vw, 40px); /* 響應式字體大小 */
-  overflow: hidden; /* 確保內容不超出圓角 */
-}
-
-.card-back {
-  background-color: #0077cc; /* 卡牌背面顏色 (藍色系) */
-  color: white;
-  /* 可以用 SVG 或文字作為背面圖案 */
-}
-
-.card-front {
-  background-color: #e9ecef; /* 卡牌正面顏色 (淺灰色) */
-  color: #343a40;
-  transform: rotateY(180deg); /* 正面初始時是翻轉的 */
-}
-
-.controls {
-  margin-top: 25px;
-  text-align: center;
+.logo a {
+  color: inherit;
+  text-decoration: none;
 }
 
 button:not(.menu-toggle) {
@@ -255,28 +198,132 @@ button:not(.menu-toggle):hover {
 }
 
 button:active {
-  transform: translateY(1px);
+  transform: scale(0.95);
 }
 
-.message-area {
-  margin-top: 15px;
-  font-size: 1.1em;
+.btn-toggle-instructions {
+  background-color: #c59328;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(255, 157, 0, 0.3);
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.btn-toggle-instructions:hover {
+  background-color: rgba(255, 157, 0, 0.3);
+}
+
+.instruction-card {
+  background: linear-gradient(135deg, #d1eaff, #ffffff);
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 12px rgba(0, 123, 255, 0.15);
+  color: #0a3d62;
+  font-weight: 600;
+  max-width: 500px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
+  opacity: 1;
+  max-height: 1000px; /* 預設最大高度 */
+}
+
+.instruction-card.hidden {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.instruction-card h2 {
+  margin-top: 0;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-card ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.instruction-card ul li {
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 30px;
+  color: #055a8c;
+}
+
+.instruction-card ul li::before {
+  content: "👉";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.2rem;
+  color: #a1c2e4;
+}
+
+/* 遊戲區域樣式 */
+#game-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2em;
   font-weight: bold;
-  color: #17a2b8; /* 資訊藍 */
-  min-height: 25px; /* 避免跳動 */
-  text-align: center;
+  min-height: 100px;
 }
 
-.message-area.success {
-  color: #28a745; /* 成功綠 */
+#winner-info {
+  color: #d9534f;
 }
 
-.message-area.error {
-  /* 雖然此遊戲不常用，但可備用 */
-  color: #dc3545; /* 錯誤紅 */
+#winner-info.win {
+  color: #5cb85c;
 }
 
-/* --- 漢堡選單 & 手機控制 & 響應式調整 --- */
+#winner-info.tie {
+  color: #f0ad4e;
+}
+
+/* retryButton 專用 */
+#retryButton {
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+#retryButton:hover {
+  background-color: #0056b3;
+}
+
+#retryButton:active {
+  transform: scale(0.95);
+}
+
+/* 響應式媒體查詢 */
 @media (max-width: 1024px) {
   .site-header .container .header-inner {
     flex-direction: column;
@@ -307,7 +354,7 @@ button:active {
     position: absolute;
     top: 100%;
     right: 0;
-    background: #4a5363;
+    background: #4a5363; /* 主色 */
     width: 100%;
     z-index: 1000;
     flex-direction: column;
@@ -315,7 +362,7 @@ button:active {
   }
   nav.navbar.active,
   .navbar.active {
-    display: flex; /* 之前有display:block跟flex，這裡統一用flex */
+    display: flex;
     animation: fadeIn 0.3s ease-in-out;
   }
   nav.navbar ul.nav-links,

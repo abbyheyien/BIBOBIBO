@@ -211,6 +211,7 @@ p {
   padding: 10px;
   border-radius: 5px;
 }
+
 /* 頁尾 */
 .site-footer {
   background: #4a5363;
@@ -230,8 +231,7 @@ p {
   color: #e1e6eb !important;
 }
 
-/* RWD - 漢堡選單 & 手機控制 */
-/* 漢堡選單 & 手機控制 */
+/* RWD */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
