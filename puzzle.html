@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIBOBIBO遊戲天堂</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/puzzle.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-inner">
+          <h1 class="logo"><a href="./index.html">BIBOBIBO</a></h1>
+
+          <input
+            type="text"
+            id="game-search"
+            placeholder="搜尋遊戲名稱..."
+            class="search-input"
+          />
+
+          <!-- 漢堡選單按鈕 -->
+          <button class="menu-toggle" id="menu-toggle" aria-label="切換選單">
+            ☰
+          </button>
+
+          <nav class="navbar" id="navbar">
+            <ul class="nav-links">
+              <li><a href="./index.html">首頁</a></li>
+              <li><a href="./puzzle.html">益智</a></li>
+              <li><a href="./action.html">動作</a></li>
+              <li><a href="./logic.html">邏輯思考</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h2>挑戰智慧與創意！</h2>
+        <p>
+          在這裡，你可以找到多款益智遊戲，幫助你鍛鍊大腦，享受解謎和思考的樂趣。
+        </p>
+      </div>
+    </section>
+
+    <section class="games">
+      <div class="container">
+        <div class="game-grid">
+          <div class="game-card">
+            <a href="./game/1A2B/index.html">
+              <img src="./images/1.png" alt="Game 1" />
+              <h4>1A2B</h4>
+            </a>
+          </div>
+          <div class="game-card">
+            <a href="./game/記憶卡牌/index.html">
+              <img src="./images/3.jpg" alt="Game 3" />
+              <h4>記憶翻牌</h4>
+            </a>
+          </div>
+          <div class="game-card">
+            <a href="./game/knight/index.html">
+              <img src="./images/4.png" alt="Game 4" />
+              <h4>騎士巡遊</h4>
+            </a>
+          </div>
+          <div class="game-card">
+            <a href="./game/井字棋/index.html">
+              <img src="./images/9.png" alt="Game 9" />
+              <h4>井字棋</h4>
+            </a>
+          </div>
+          <div class="game-card">
+            <a href="./game/猜拳/">
+              <img src="./images/10.png" alt="Game 10" />
+              <h4>猜拳</h4>
+            </a>
+          </div>
+          <div class="game-card">
+            <a href="./game/迷宮/">
+              <img src="./images/11.png" alt="Game 11" />
+              <h4>迷宮</h4>
+            </a>
+          </div>
+          <div class="game-card">
+            <img src="./images/12.png" alt="Game 12" />
+            <h4>賓果遊戲</h4>
+          </div>
+          <div class="game-card">
+            <img src="./images/8.png"" alt="Game 8" />
+            <h4>音樂節奏遊戲</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 我的遊戲天地 | 遊戲只是生活的一部分</p>
+      </div>
+    </footer>
+
+    <script src="./js/puzzle.js"></script>
+  </body>
+</html>

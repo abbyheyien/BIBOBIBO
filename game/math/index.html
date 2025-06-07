@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>數學大挑戰 - BIBOBIBO遊戲天堂</title>
+    <link rel="icon" href="../../images/favicon.ico" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-inner">
+          <h1 class="logo">
+            <a href="../../index.html">BIBOBIBO</a>
+          </h1>
+
+          <input
+            type="text"
+            id="game-search"
+            placeholder="搜尋遊戲名稱..."
+            class="search-input"
+          />
+
+          <button class="menu-toggle" id="menu-toggle" aria-label="切換選單">
+            ☰
+          </button>
+
+          <nav class="navbar" id="navbar">
+            <ul class="nav-links">
+              <li><a href="../../index.html">首頁</a></li>
+              <li>
+                <a href="../../puzzle.html">益智</a>
+              </li>
+              <li>
+                <a href="../../action.html">動作</a>
+              </li>
+              <li>
+                <a href="../../logic.html">邏輯思考</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="main-content">
+        <div class="game-container">
+          <div id="start-screen" class="screen">
+            <h1>數學大挑戰</h1>
+            <p>
+              準備好挑戰你的心算能力了嗎？<br />在時間內盡可能答對更多題目吧！
+            </p>
+            <div id="difficulty-selector">
+              <label for="difficulty-select">選擇難度：</label>
+              <select id="difficulty-select">
+                <option value="easy">簡單 (加減, 1-20)</option>
+                <option value="medium" selected>
+                  中等 (加減乘, 1-50, 乘法1-10)
+                </option>
+                <option value="hard">困難 (加減乘除, 1-100, 乘除1-12)</option>
+              </select>
+            </div>
+            <button id="start-btn" class="btn">開始挑戰</button>
+          </div>
+
+          <div id="game-screen" class="screen">
+            <div class="game-header">
+              <span id="timer-display">時間: 60</span>
+              <span id="score-display">分數: 0</span>
+            </div>
+            <div id="problem-container">1 + 1 = ?</div>
+            <input type="number" id="answer-input" placeholder="答案" />
+            <button id="submit-btn" class="btn">提交答案</button>
+            <div id="feedback-message"></div>
+          </div>
+
+          <div id="end-screen" class="screen">
+            <h2>挑戰結束！</h2>
+            <p id="final-score"></p>
+            <button id="restart-btn" class="btn">再玩一次</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 我的遊戲天地 | 遊戲只是生活的一部分</p>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

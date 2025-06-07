@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Bingo - BIBOBIBO遊戲天堂</title>
+    <link rel="icon" href="../../images/favicon.ico" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-inner">
+          <h1 class="logo">
+            <a href="../../index.html">BIBOBIBO</a>
+          </h1>
+
+          <input
+            type="text"
+            id="game-search"
+            placeholder="搜尋遊戲名稱..."
+            class="search-input"
+          />
+
+          <button class="menu-toggle" id="menu-toggle" aria-label="切換選單">
+            ☰
+          </button>
+
+          <nav class="navbar" id="navbar">
+            <ul class="nav-links">
+              <li><a href="../../index.html">首頁</a></li>
+              <li><a href="../../puzzle.html">益智</a></li>
+              <li><a href="../../action.html">動作</a></li>
+              <li><a href="../../logic.html">邏輯思考</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <h1>賓果遊戲</h1>
+
+      <div
+        id="game-controls"
+        style="
+          margin: 10px auto;
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+        "
+      >
+        <label for="difficulty">選擇難度：</label>
+        <select id="difficulty">
+          <option value="easy">簡單</option>
+          <option value="hard">困難</option>
+        </select>
+
+        <div id="score">
+          <span>勝場：<span id="win-count">0</span></span> |
+          <span>敗場：<span id="lose-count">0</span></span>
+        </div>
+      </div>
+
+      <div id="turn-indicator">玩家回合，請點選你要叫的號碼</div>
+      <div class="board-container">
+        <div>
+          <h3>玩家賓果卡</h3>
+          <div id="player-board" class="board"></div>
+        </div>
+        <div>
+          <h3>電腦賓果卡</h3>
+          <div id="computer-board" class="board"></div>
+        </div>
+      </div>
+      <div id="message"></div>
+      <button
+        id="restart-btn"
+        style="display: none; margin: 20px auto; display: block"
+      >
+        再來一次
+      </button>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 我的遊戲天地 | 遊戲只是生活的一部分</p>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

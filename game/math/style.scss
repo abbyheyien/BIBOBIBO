@@ -1,0 +1,464 @@
+/* Reset & 基本設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #e8ebef;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 連結樣式 */
+a {
+  text-decoration: none;
+}
+
+main {
+  flex: 1; /* 讓 main 撐滿剩餘高度 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 主體區域*/
+#main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e8ebef;
+}
+
+/* 遊戲區塊 */
+.game-container {
+  background-color: #bbd3c8;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  max-width: 500px; /* 稍微縮小最大寬度 */
+  overflow: hidden;
+  text-align: center;
+}
+
+.screen {
+  padding: 25px 20px;
+}
+
+#start-screen h1 {
+  font-size: 2.2em;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+#start-screen p {
+  font-size: 1.05em;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.btn {
+  background-color: #344e41;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+#game-screen {
+  display: none;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+#timer-display {
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+#score-display {
+  font-weight: 700;
+}
+
+#problem-container {
+  font-size: 2.5em; /* 放大題目字體 */
+  font-weight: 700;
+  margin: 30px 0;
+  min-height: 60px; /* 確保有足夠高度 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #344e41; /* 更深的綠色 */
+}
+
+#answer-input {
+  width: 60%;
+  max-width: 200px;
+  padding: 12px;
+  font-size: 1.5em; /* 放大答案輸入框字體 */
+  text-align: center;
+  border: 2px solid var(--input-border-color);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#answer-input:focus {
+  border-color: var(--accent-color);
+}
+
+#feedback-message {
+  min-height: 25px;
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.feedback-correct {
+  color: var(--accent-color);
+}
+.feedback-incorrect {
+  color: #c9184a; /* 錯誤的紅色 */
+}
+
+#end-screen {
+  display: none;
+}
+
+#end-screen h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+#final-score {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 25px;
+}
+
+#difficulty-selector {
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+#difficulty-selector label {
+  margin-right: 8px;
+  font-weight: 500;
+}
+#difficulty-select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--input-border-color);
+  font-size: 0.95em;
+}
+
+/* Logo 連結 */
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 頁首 */
+.site-header {
+  background: #4a5363;
+  color: #e1e6eb;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #7d8ca3;
+}
+.site-header .container {
+  max-width: 1200px;
+  margin: auto;
+}
+.site-header .container .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+.site-header .container .header-inner .logo {
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e1e6eb;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 0 0 4px rgba(173, 181, 189, 0.6);
+}
+.site-header .container .header-inner .search-input {
+  flex-grow: 1;
+  max-width: 500px;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #e1e6eb;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  color: #e1e6eb;
+  text-align: center; /* 預設置中 placeholder */
+  transition: all 0.3s ease;
+  margin-left: 4rem;
+}
+/* 輸入時或有文字時左對齊 */
+.site-header .container .header-inner .search-input:focus,
+.site-header .container .header-inner .search-input:not(:placeholder-shown) {
+  text-align: left;
+}
+/* placeholder 顏色 */
+.site-header .container .header-inner .search-input::placeholder {
+  color: rgba(225, 230, 235, 0.6);
+}
+
+.site-header .container .header-inner nav.navbar {
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
+.site-header .container .header-inner nav.navbar ul.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.75rem;
+}
+.site-header .container .header-inner nav.navbar li {
+  white-space: nowrap;
+}
+.site-header .container .header-inner nav.navbar a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #e1e6eb;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+.site-header .container .header-inner nav.navbar a:hover {
+  color: white;
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+/* 手機選單按鈕（目前隱藏） */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #e1e6eb;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+
+/* 文字標題與段落 */
+h1 {
+  color: #333;
+  margin-top: 0;
+}
+p {
+  color: #555;
+  font-size: 16px;
+}
+
+/* 輸入欄 */
+#user-input {
+  width: 280px; /* 固定寬度，略小於父容器 */
+  margin: 0 0 15px 0; /* 上右下左 */
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  display: block;
+}
+
+/* 按鈕 */
+#guess-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+#guess-button:hover {
+  background-color: #0056b3;
+}
+
+/* 歷史記錄區塊 */
+#history {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 16px;
+  height: 120px; /* 固定高度 */
+  overflow-y: auto;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* 頁尾 */
+.site-footer {
+  background: #4a5363;
+  color: #e1e6eb; /* 確保字是亮色 */
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 1rem;
+  border-top: 1px solid #7d8ca3;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  flex-shrink: 0;
+  min-height: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.site-footer p {
+  color: #e1e6eb !important;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav.navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #4a5363;
+    width: 100%;
+    z-index: 1000;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  nav.navbar.active {
+    display: flex;
+  }
+
+  nav.navbar ul.nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav.navbar li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav.navbar a {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .search-input {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  nav.navbar {
+    margin-left: 0;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+}
+
+/* 1024px 以下響應式 */
+@media (max-width: 1024px) {
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .site-header .container .header-inner .search-input {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .site-header .container .header-inner nav.navbar {
+    margin-left: 0;
+  }
+
+  .site-header .container .header-inner nav.navbar ul.nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* 480px 以下調整 */
+@media (max-width: 480px) {
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 0.75rem 0;
+  }
+
+  #game-container {
+    width: 90vw; /* 用視窗寬度 90% */
+    height: auto; /* 高度改自動調整 */
+    max-height: 90vh; /* 最大高度不超過視窗高度 */
+    padding: 20px; /* 內距稍微縮小 */
+  }
+}

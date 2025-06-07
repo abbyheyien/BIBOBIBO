@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>迷宮 - BIBOBIBO遊戲天堂</title>
+    <link rel="icon" href="../../images/favicon.ico" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-inner">
+          <h1 class="logo">
+            <a href="../../index.html">BIBOBIBO</a>
+          </h1>
+
+          <input
+            type="text"
+            id="game-search"
+            placeholder="搜尋遊戲名稱..."
+            class="search-input"
+          />
+
+          <button class="menu-toggle" id="menu-toggle" aria-label="切換選單">
+            ☰
+          </button>
+
+          <nav class="navbar" id="navbar">
+            <ul class="nav-links">
+              <li><a href="../../index.html">首頁</a></li>
+              <li>
+                <a href="../../puzzle.html">益智</a>
+              </li>
+              <li>
+                <a href="../../action.html">動作</a>
+              </li>
+              <li>
+                <a href="../../logic.html">邏輯思考</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <h1>走迷宮遊戲</h1>
+
+      <button id="toggleInstructionsBtn" class="btn-toggle-instructions">
+        遊戲說明
+      </button>
+
+      <div id="instructions" class="instruction-card hidden">
+        <h2>遊戲玩法說明</h2>
+        <ul>
+          <li>使用方向鍵或 WASD 控制玩家移動。</li>
+          <li>在迷宮中找到出口（綠色格子）以通關。</li>
+          <li>黑色為牆壁，白色為可通行路徑。</li>
+          <li>選擇難度影響迷宮複雜度和挑戰性。</li>
+          <li>點擊「重新開始」可重玩當前難度迷宮。</li>
+        </ul>
+      </div>
+
+      <div id="difficulty-select">
+        <button data-difficulty="easy" class="active">簡單</button>
+        <button data-difficulty="normal">普通</button>
+        <button data-difficulty="hard">困難</button>
+      </div>
+
+      <canvas id="mazeCanvas"></canvas>
+      <p id="message"></p>
+      <button id="retryButton">再來一次</button>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 我的遊戲天地 | 遊戲只是生活的一部分</p>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

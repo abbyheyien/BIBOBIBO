@@ -1,0 +1,362 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央對齊 */
+  justify-content: center; /* 垂直置中 */
+  padding: 1rem 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-header {
+  background: #4a5363;
+  color: #e1e6eb;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #7d8ca3;
+}
+.site-header .container {
+  max-width: 1200px;
+  margin: auto;
+}
+.site-header .container .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+.site-header .container .header-inner .logo {
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e1e6eb;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 0 0 4px rgba(173, 181, 189, 0.6);
+}
+.site-header .container .header-inner .search-input {
+  flex-grow: 1;
+  max-width: 500px;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #e1e6eb;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  color: #e1e6eb;
+  text-align: center; /* 預設置中 placeholder */
+  transition: all 0.3s ease;
+  margin-left: 4rem;
+}
+/* 輸入時或有文字時左對齊 */
+.site-header .container .header-inner .search-input:focus,
+.site-header .container .header-inner .search-input:not(:placeholder-shown) {
+  text-align: left;
+}
+
+/* placeholder 顏色 */
+.site-header .container .header-inner .search-input::placeholder {
+  color: rgba(225, 230, 235, 0.6);
+}
+.site-header .container .header-inner nav.navbar {
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
+.site-header .container .header-inner nav.navbar ul.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.75rem;
+}
+.site-header .container .header-inner nav.navbar li {
+  white-space: nowrap;
+}
+.site-header .container .header-inner nav.navbar a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #e1e6eb;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+.site-header .container .header-inner nav.navbar a:hover {
+  color: white;
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #e1e6eb;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+
+.site-footer {
+  background: #4a5363;
+  color: #e1e6eb;
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #7d8ca3;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 2rem; /* 與遊戲區塊間隔 */
+}
+
+#restartBtn {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  background-color: #7d8ca3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#restartBtn:hover {
+  background-color: #4a5363;
+}
+
+canvas {
+  display: block; /* 讓它變成區塊元素 */
+  margin: 1rem auto; /* 上下間距 1rem，左右自動置中 */
+  max-width: 480px; /* 限制最大寬度 */
+  width: 100%; /* 寬度填滿父元素 */
+  height: auto;
+  background: #ffffff;
+  border: 2px solid #7d8ca3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  touch-action: none;
+}
+
+/* footer */
+.site-footer {
+  background: #4a5363;
+  color: #e1e6eb;
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 1rem;
+  border-top: 1px solid #7d8ca3;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* RWD - 漢堡選單 & 手機控制 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav.navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #4a5363;
+    width: 100%;
+    z-index: 1000;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  nav.navbar.active {
+    display: flex;
+  }
+
+  nav.navbar ul.nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav.navbar li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav.navbar a {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .search-input {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  nav.navbar {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .mobile-controls {
+    width: 100%;
+    max-width: 320px;
+    margin: 1rem auto;
+  }
+
+  .mobile-controls button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+
+/* --- 響應式調整 --- */
+@media (max-width: 1024px) {
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .site-header .container .header-inner .search-input {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .site-header .container .header-inner nav.navbar {
+    margin-left: 0;
+  }
+  .site-header .container .header-inner nav.navbar ul.nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #4a5363;
+    width: 100%;
+    z-index: 1000;
+  }
+  .navbar ul.nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  .navbar.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .logo {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .game-main-content h2 {
+    font-size: 1.5rem;
+  }
+  .score-board {
+    font-size: 1.2em;
+  }
+  button#startButton,
+  button#restartButton {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 0.75rem 0;
+  }
+  .message-box {
+    padding: 20px;
+    width: 80%;
+  }
+  .message-box h2 {
+    font-size: 1.5em;
+  }
+  .message-box p {
+    font-size: 1em;
+  }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>幾A幾B - BIBOBIBO遊戲天堂</title>
+    <link rel="icon" href="../../images/favicon.ico" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-inner">
+          <h1 class="logo">
+            <a href="../../index.html">BIBOBIBO</a>
+          </h1>
+
+          <input
+            type="text"
+            id="game-search"
+            placeholder="搜尋遊戲名稱..."
+            class="search-input"
+          />
+
+          <button class="menu-toggle" id="menu-toggle" aria-label="切換選單">
+            ☰
+          </button>
+
+          <nav class="navbar" id="navbar">
+            <ul class="nav-links">
+              <li><a href="../../index.html">首頁</a></li>
+              <li>
+                <a href="../../puzzle.html">益智</a>
+              </li>
+              <li>
+                <a href="../../action.html">動作</a>
+              </li>
+              <li>
+                <a href="../../logic.html">邏輯思考</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="game-container">
+        <div id="start-screen" class="screen">
+          <h1>知識王挑戰</h1>
+          <p>
+            準備好測試你的知識了嗎？<br />每題有15秒的作答時間，看看你能得幾分！
+          </p>
+
+          <div class="difficulty-wrapper">
+            <label for="difficulty-select">選擇難度：</label>
+            <select id="difficulty-select">
+              <option value="簡單">簡單</option>
+              <option value="普通" selected>普通</option>
+              <option value="困難">困難</option>
+            </select>
+          </div>
+
+          <button id="start-btn" class="btn">開始遊戲</button>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+          <div class="quiz-header">
+            <span id="question-number">題目 1 / 10</span>
+            <span id="timer">倒數：10 秒</span>
+            <span id="score-display">分數: 0</span>
+          </div>
+
+          <div class="timer-container">
+            <div id="timer-bar"></div>
+          </div>
+          <div id="question-text"></div>
+          <div id="answer-options" class="answer-options"></div>
+        </div>
+
+        <div id="end-screen" class="screen">
+          <h2>遊戲結束！</h2>
+          <p id="final-score"></p>
+          <button id="restart-btn" class="btn">再玩一次</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 我的遊戲天地 | 遊戲只是生活的一部分</p>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

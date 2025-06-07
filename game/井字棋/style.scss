@@ -1,0 +1,326 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #e8ebef;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  margin: 10px;
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.site-header {
+  background: #4a5363;
+  color: #e1e6eb;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #7d8ca3;
+}
+.site-header .container {
+  max-width: 1200px;
+  margin: auto;
+}
+.site-header .container .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+.site-header .container .header-inner .logo {
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e1e6eb;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 0 0 4px rgba(173, 181, 189, 0.6);
+}
+.site-header .container .header-inner .search-input {
+  flex-grow: 1;
+  max-width: 500px;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid #e1e6eb;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  color: #e1e6eb;
+  text-align: center; /* 預設置中 placeholder */
+  transition: all 0.3s ease;
+  margin-left: 4rem;
+}
+/* 輸入時或有文字時左對齊 */
+.site-header .container .header-inner .search-input:focus,
+.site-header .container .header-inner .search-input:not(:placeholder-shown) {
+  text-align: left;
+}
+
+/* placeholder 顏色 */
+.site-header .container .header-inner .search-input::placeholder {
+  color: rgba(225, 230, 235, 0.6);
+}
+.site-header .container .header-inner nav.navbar {
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
+.site-header .container .header-inner nav.navbar ul.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.75rem;
+}
+.site-header .container .header-inner nav.navbar li {
+  white-space: nowrap;
+}
+.site-header .container .header-inner nav.navbar a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #e1e6eb;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+.site-header .container .header-inner nav.navbar a:hover {
+  color: white;
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #e1e6eb;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+
+.games .container {
+  display: flex;
+  justify-content: center; /* 水平置中 */
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px; /* 控制最大寬度 */
+}
+
+/* 狀態文字 */
+.status {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+  text-align: center;
+}
+
+/* 井字棋盤 */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center; /* 水平置中整個棋盤 */
+  margin: 0 auto 2rem auto;
+}
+
+/* 棋格 */
+.cell {
+  background-color: white;
+  border: 2px solid #333;
+  font-size: 3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.cell:hover {
+  background-color: #f7f7f7;
+}
+
+.cell.x::before {
+  content: "X";
+  color: #e74c3c;
+}
+
+.cell.o::before {
+  content: "O";
+  color: #3498db;
+}
+
+/* 重新開始按鈕 */
+#restartButton {
+  display: block;
+  margin: 30px auto 3rem auto; /* 上右下左 */
+  /* 其他樣式不變 */
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #4a5363;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#restartButton:hover {
+  background-color: #6a7590;
+}
+
+.site-footer {
+  background: #4a5363;
+  color: #e1e6eb;
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #7d8ca3;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 2rem; /* 與遊戲區塊間隔 */
+}
+
+/* --- 響應式調整 --- */
+@media (max-width: 1024px) {
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .site-header .container .header-inner .search-input {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .site-header .container .header-inner nav.navbar {
+    margin-left: 0;
+  }
+  .site-header .container .header-inner nav.navbar ul.nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #4a5363;
+    width: 100%;
+    z-index: 1000;
+  }
+  .navbar ul.nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  .navbar.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .logo {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .game-main-content h2 {
+    font-size: 1.5rem;
+  }
+  .score-board {
+    font-size: 1.2em;
+  }
+  button#startButton,
+  button#restartButton {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+}
+
+/* 480px 以下調整 */
+@media (max-width: 480px) {
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 0.75rem 0;
+  }
+
+  #game-container {
+    width: 90vw; /* 用視窗寬度 90% */
+    height: auto; /* 高度改自動調整 */
+    max-height: 90vh; /* 最大高度不超過視窗高度 */
+    padding: 20px; /* 內距稍微縮小 */
+  }
+}

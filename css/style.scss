@@ -1,0 +1,341 @@
+$primary-color: #7d8ca3; // 鋼鐵銀灰
+$primary-color-light: #e1e6eb; // 超淺銀灰，接近霧面銀白
+$primary-color-dark: #4a5363; // 深鐵灰
+$bg-light: #e8ebef; // 冷灰背景
+$text-dark: #2e3338; // 深冷灰
+
+// 🔄 Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: $bg-light;
+  color: $text-dark;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// 🔝 導覽列（含搜尋欄）
+.site-header {
+  background: $primary-color-dark;
+  color: $primary-color-light;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid $primary-color;
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      position: relative;
+
+      .logo {
+        flex-shrink: 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $primary-color-light;
+        font-family: "Orbitron", sans-serif;
+        text-shadow: 0 0 4px rgba(173, 181, 189, 0.6);
+      }
+
+      .search-input {
+        flex-grow: 1;
+        max-width: 500px;
+        padding: 0.5rem 1rem;
+        border: 1.5px solid $primary-color-light;
+        border-radius: 25px;
+        font-size: 1rem;
+        outline: none;
+        background: transparent;
+        color: $primary-color-light;
+        text-align: center;
+        transition: all 0.3s ease;
+        margin-left: 4rem;
+
+        &::placeholder {
+          color: rgba($primary-color-light, 0.6);
+        }
+
+        &:focus {
+          border-color: #c0c8d3;
+          box-shadow: 0 0 8px 3px rgba(192, 200, 211, 0.6);
+          background-color: rgba(255, 255, 255, 0.1);
+          color: white;
+        }
+      }
+
+      nav.navbar {
+        flex-shrink: 0;
+        margin-left: 2rem;
+
+        ul.nav-links {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          gap: 0.75rem; // ← 調整這裡
+        }
+
+        li {
+          white-space: nowrap;
+        }
+
+        a {
+          display: block;
+          padding: 0.5rem 1rem;
+          color: $primary-color-light;
+          font-weight: 600;
+          font-size: 1.05rem;
+          text-decoration: none;
+          letter-spacing: 1px;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: white;
+            text-decoration: underline;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+          }
+        }
+      }
+    }
+  }
+}
+
+// 🔧 漢堡選單按鈕樣式
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: $primary-color-light;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+
+// 📱 RWD：漢堡選單開啟與收合
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: $primary-color-dark;
+    width: 100%;
+    z-index: 1000;
+
+    ul.nav-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+  }
+
+  .navbar.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+
+    .search-input {
+      margin-left: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    nav.navbar {
+      margin-left: 0;
+    }
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-header .container .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+
+    .search-input {
+      margin-left: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    nav.navbar {
+      margin-left: 0;
+
+      ul.nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+    }
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+  }
+
+  .games .game-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .game-card {
+    padding: 0.75rem;
+
+    h4 {
+      font-size: 0.95rem;
+    }
+  }
+
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 0.75rem 0;
+  }
+}
+
+// 🏞️ hero 區塊
+.hero {
+  background: linear-gradient(135deg, #7d8ca3 0%, #a9b7c6 100%);
+  padding: 3rem 0;
+  text-align: center;
+  color: $primary-color-dark;
+
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// 🕹️ 遊戲展示區
+.games {
+  padding: 2rem 0;
+
+  h3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: $primary-color-dark;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    font-family: "Orbitron", sans-serif;
+  }
+
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .game-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(77, 84, 100, 0.15);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      filter: grayscale(20%) contrast(110%);
+      transition: filter 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(77, 84, 100, 0.3);
+
+      img {
+        filter: none;
+      }
+    }
+
+    h4 {
+      margin-top: 1rem;
+      font-size: 1.15rem;
+      color: $primary-color-dark;
+      font-weight: 700;
+      font-family: "Orbitron", sans-serif;
+    }
+  }
+}
+
+// 📍 頁尾
+.site-footer {
+  background: $primary-color-dark;
+  color: $primary-color-light;
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid $primary-color;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

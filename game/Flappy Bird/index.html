@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Flappy Bird - BIBOBIBO遊戲天堂</title>
+    <link rel="icon" href="../../images/favicon.ico" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="header-inner">
+          <h1 class="logo">
+            <a href="../../index.html">BIBOBIBO</a>
+          </h1>
+
+          <input
+            type="text"
+            id="game-search"
+            placeholder="搜尋遊戲名稱..."
+            class="search-input"
+          />
+
+          <button class="menu-toggle" id="menu-toggle" aria-label="切換選單">
+            ☰
+          </button>
+
+          <nav class="navbar" id="navbar">
+            <ul class="nav-links">
+              <li><a href="../../index.html">首頁</a></li>
+              <li>
+                <a href="../../puzzle.html">益智</a>
+              </li>
+              <li>
+                <a href="../../action.html">動作</a>
+              </li>
+              <li>
+                <a href="../../logic.html">邏輯思考</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="game-main-content">
+      <h2>Flappy Bird</h2>
+      <div class="score-board" id="score">分數：0</div>
+      <canvas id="gameCanvas" width="400" height="600"></canvas>
+      <div style="margin-top: 1rem">
+        <button id="startButton">開始遊戲</button>
+        <button id="restartButton" style="display: none">重新開始</button>
+        <button id="rulesButton">規則說明</button>
+      </div>
+    </main>
+
+    <!-- 遊戲結束訊息 -->
+    <div class="message-overlay" id="gameOverMessage" style="display: none">
+      <div class="message-box">
+        <h2>遊戲結束！</h2>
+        <p id="finalScore"></p>
+        <button id="closeMessage">關閉</button>
+      </div>
+    </div>
+
+    <!-- 規則說明彈窗 -->
+    <div class="message-overlay" id="rulesOverlay" style="display: none">
+      <div class="message-box">
+        <h2>遊戲規則說明</h2>
+        <ul>
+          <li>點擊開始遊戲，控制小鳥飛行，避免撞到障礙物。</li>
+          <li>每通過一組障礙物得1分。</li>
+          <li>遊戲結束後，可點擊重新開始或關閉視窗。</li>
+        </ul>
+        <button id="closeRules">關閉規則說明</button>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 我的遊戲天地 | 遊戲只是生活的一部分</p>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
